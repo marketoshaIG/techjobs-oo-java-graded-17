@@ -28,9 +28,10 @@ public class Job {
         this.positionType = positionType;
         this.coreCompetency = coreCompetency;
     }
+    public Job(int id, String name, String google, String s, String s1, String softwareDevelopment) {
+    }
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
     //  match.
-
     // Custom equals method. Two Job objects are "equal" when their id fields match.
     @Override
     public boolean equals(Object o) {
@@ -84,4 +85,27 @@ public class Job {
     public void setCoreCompetency(CoreCompetency coreCompetency) {
         this.coreCompetency = coreCompetency;
     }
+
+    @Override
+    public String toString() {
+        // new line
+        String toString = System.lineSeparator();
+        // Add the labels and data for each field.
+        toString += "ID: " + getId() + System.lineSeparator();
+        toString += "Name: " + getName() + System.lineSeparator();
+        toString += "Employer: " + getEmployer() + System.lineSeparator();
+        toString += "Location: " + getLocation() + System.lineSeparator();
+        toString += "Position Type: " + getPositionType() + System.lineSeparator();
+        toString += "Core Competency: " + getCoreCompetency() + System.lineSeparator();
+        if (getName() == null) {
+            toString += "Name: Data not available" + System.lineSeparator();
+            toString += System.lineSeparator();
+        }
+        // End the string with a new line.
+        return toString;
+    }
+
+
+
+
 }
