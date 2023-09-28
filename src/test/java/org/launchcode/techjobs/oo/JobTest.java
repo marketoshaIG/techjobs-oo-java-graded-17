@@ -3,7 +3,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import static org.testng.AssertJUnit.assertTrue;
 public class JobTest {
-// test 4 - Tests
+    // test 4 - Tests
     //TODO: Create your unit tests here
     @Test  //Test 1
     public void testSettingJobId() {
@@ -67,8 +67,4 @@ public class JobTest {
         // Assert that the string contains the label for the empty field, followed by "Data not available".
         assertTrue(toString.contains("Name: Data not available"));
     }
-
-
-
-
 }

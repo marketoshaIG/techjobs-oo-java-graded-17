@@ -54,7 +54,7 @@ public class AbstractTest {
             Method getValueMethod = clazz.getMethod("getValue");
             value = (String) getValueMethod.invoke(fieldValue);
         }
-        if (substituteEmpty && value == "") {
+        if (substituteEmpty && (value == null || value == "")) {
             value = "Data not available";
         }
         return value;
@@ -67,14 +67,25 @@ public class AbstractTest {
         return idField.getInt(job);
     }
 
-    protected String getJobString (Job job) throws NoSuchMethodException, ClassNotFoundException, InvocationTargetException, IllegalAccessException, NoSuchFieldException {
-        return String.format("\nID: %d\n" +
-                        "Name: %s\n" +
-                        "Employer: %s\n" +
-                        "Location: %s\n" +
-                        "Position Type: %s\n" +
-                        "Core Competency: %s\n", getJobId(job), getJobFieldString(job, "name", true), getJobFieldString(job, "employer", true), getJobFieldString(job, "location", true),
-                getJobFieldString(job, "positionType", true), getJobFieldString(job, "coreCompetency", true));
-    }
+    protected String getJobString(Job job) throws NoSuchMethodException, ClassNotFoundException, InvocationTargetException, IllegalAccessException, NoSuchFieldException {
+        String result = System.lineSeparator();
 
+        result += "ID: " + getJobId(job) + System.lineSeparator();
+        result += "Name: " + getJobFieldString(job, "name", true) + System.lineSeparator();
+        result += "Employer: " + getJobFieldString(job, "employer", true) + System.lineSeparator();
+        result += "Location: " + getJobFieldString(job, "location", true) + System.lineSeparator();
+        result += "Position Type: " + getJobFieldString(job, "positionType", true) + System.lineSeparator();
+        result += "Core Competency: " + getJobFieldString(job, "coreCompetency", true) + System.lineSeparator();
+
+        return result;
+    }
+//    protected String getJobString (Job job) throws NoSuchMethodException, ClassNotFoundException, InvocationTargetException, IllegalAccessException, NoSuchFieldException {
+//        return String.format("\nID: %d\n" +
+//                        "Name: %s\n" +
+//                        "Employer: %s\n" +
+//                        "Location: %s\n" +
+//                        "Position Type: %s\n" +
+//                        "Core Competency: %s\n", getJobId(job), getJobFieldString(job, "name", true), getJobFieldString(job, "employer", true), getJobFieldString(job, "location", true),
+//                getJobFieldString(job, "positionType", true), getJobFieldString(job, "coreCompetency", true));
+//}
 }

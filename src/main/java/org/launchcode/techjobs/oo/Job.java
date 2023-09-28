@@ -3,6 +3,7 @@ package org.launchcode.techjobs.oo;
 import java.util.Objects;
 
 public class Job {
+    static String defaultOutput = "Data not available";
 
     private int id;
     private static int nextId = 1;
@@ -17,6 +18,11 @@ public class Job {
     //  other five fields. The second constructor should also call the first in order to initialize
     //  the 'id' field.
     public Job() {
+        this.name = "";
+        this.employer = null;
+        this.location = null;
+        this.positionType = null;
+        this.coreCompetency = null;
         id = nextId;
         nextId++;
     }
@@ -101,37 +107,69 @@ public class Job {
 
     @Override
     public String toString() {
-        // new line
+        // ID
+        StringBuilder result = new StringBuilder();
 
-        // Add the labels and data for each field.
+        result.append(System.lineSeparator() + "ID: " + getId() + System.lineSeparator());
 
-        String
-                toString = System.lineSeparator() + ("ID: " + getId() + System.lineSeparator());
-        toString += "Name: " + getName() + System.lineSeparator();
-        if (Objects.equals(getName(), "")) {
-            toString += "Name: Data not available" + System.lineSeparator();
+        // name
+        String tempOutput = this.getName();
+        if (tempOutput == null || tempOutput.isEmpty()){
+            tempOutput = defaultOutput;
         }
-            toString += "Employer: " + getEmployer() + System.lineSeparator();
-        if (Objects.equals(getEmployer(), "")) {
-            toString += "Employer: Data not available" + System.lineSeparator();
-        }
-            toString += "Location: " + getLocation() + System.lineSeparator();
-        if (Objects.equals(getLocation(), "")) {
-            toString += "Location: Data not available" + System.lineSeparator();
-        }
-            toString += "Position Type: " + getPositionType() + System.lineSeparator();
-        if (Objects.equals(getPositionType(), "")) {
-            toString += "Position Type: Data not available" + System.lineSeparator();
-        }
-            toString += "Core Competency: " + getCoreCompetency() ;
-        if (Objects.equals(getCoreCompetency(), "")) {
-            toString += "Core Competency: Data not available" + System.lineSeparator();
-        }
+        result.append("Name: " + tempOutput + System.lineSeparator());
 
-            // End the string with a new line.
-            return toString;
+
+        // Employer
+        tempOutput = "";
+        Employer employer = this.getEmployer();
+        if (employer != null){
+            tempOutput = employer.getValue();
         }
+        if (tempOutput == null || tempOutput.isEmpty()){
+            tempOutput = defaultOutput;
+        }
+        result.append("Employer: " + tempOutput + System.lineSeparator());
+
+
+        // Location
+        tempOutput = "";
+        Location location = this.getLocation();
+        if (location != null){
+            tempOutput = location.getValue();
+        }
+        if (tempOutput == null || tempOutput.isEmpty()){
+            tempOutput = defaultOutput;
+        }
+        result.append("Location: " + tempOutput + System.lineSeparator());
+
+
+        // Position Type
+        tempOutput = "";
+        PositionType pt = this.getPositionType();
+        if (pt != null){
+            tempOutput = pt.getValue();
+        }
+        if (tempOutput == null || tempOutput.isEmpty()){
+            tempOutput = defaultOutput;
+        }
+        result.append("Position Type: " + tempOutput + System.lineSeparator());
+
+
+        // Core Compentency
+        tempOutput = "";
+        CoreCompetency cc = this.getCoreCompetency();
+        if (cc != null){
+            tempOutput = cc.getValue();
+        }
+        if (tempOutput == null || tempOutput.isEmpty()){
+            tempOutput = defaultOutput;
+        }
+        result.append("Core Competency: " + tempOutput);
+
+        // End the string with a new line.
+        result.append(System.lineSeparator());
+
+        return result.toString();
     }
-
-
-
+}
