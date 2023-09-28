@@ -20,6 +20,7 @@ public class Job {
         id = nextId;
         nextId++;
     }
+
     public Job(String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency) {
         this(); // Call the default constructor to initialize 'id'
         this.name = name;
@@ -28,8 +29,10 @@ public class Job {
         this.positionType = positionType;
         this.coreCompetency = coreCompetency;
     }
+
     public Job(int id, String name, String google, String s, String s1, String softwareDevelopment) {
     }
+
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
     //  match.
     // Custom equals method. Two Job objects are "equal" when their id fields match.
@@ -40,6 +43,7 @@ public class Job {
         Job job = (Job) o;
         return id == job.id;
     }
+
     // Custom hashCode method.
     @Override
     public int hashCode() {
@@ -53,18 +57,23 @@ public class Job {
     public int getId() {
         return id;
     }
+
     public String getName() {
         return name;
     }
+
     public Employer getEmployer() {
         return employer;
     }
+
     public Location getLocation() {
         return location;
     }
+
     public PositionType getPositionType() {
         return positionType;
     }
+
     public CoreCompetency getCoreCompetency() {
         return coreCompetency;
     }
@@ -73,15 +82,19 @@ public class Job {
     public void setName(String name) {
         this.name = name;
     }
+
     public void setEmployer(Employer employer) {
         this.employer = employer;
     }
+
     public void setLocation(Location location) {
         this.location = location;
     }
+
     public void setPositionType(PositionType positionType) {
         this.positionType = positionType;
     }
+
     public void setCoreCompetency(CoreCompetency coreCompetency) {
         this.coreCompetency = coreCompetency;
     }
@@ -89,23 +102,36 @@ public class Job {
     @Override
     public String toString() {
         // new line
-        String toString = System.lineSeparator();
+
         // Add the labels and data for each field.
-        toString += "ID: " + getId() + System.lineSeparator();
+
+        String
+                toString = System.lineSeparator() + ("ID: " + getId() + System.lineSeparator());
         toString += "Name: " + getName() + System.lineSeparator();
-        toString += "Employer: " + getEmployer() + System.lineSeparator();
-        toString += "Location: " + getLocation() + System.lineSeparator();
-        toString += "Position Type: " + getPositionType() + System.lineSeparator();
-        toString += "Core Competency: " + getCoreCompetency() + System.lineSeparator();
-        if (getName() == null) {
+        if (Objects.equals(getName(), "")) {
             toString += "Name: Data not available" + System.lineSeparator();
-            toString += System.lineSeparator();
         }
-        // End the string with a new line.
-        return toString;
+            toString += "Employer: " + getEmployer() + System.lineSeparator();
+        if (Objects.equals(getEmployer(), "")) {
+            toString += "Employer: Data not available" + System.lineSeparator();
+        }
+            toString += "Location: " + getLocation() + System.lineSeparator();
+        if (Objects.equals(getLocation(), "")) {
+            toString += "Location: Data not available" + System.lineSeparator();
+        }
+            toString += "Position Type: " + getPositionType() + System.lineSeparator();
+        if (Objects.equals(getPositionType(), "")) {
+            toString += "Position Type: Data not available" + System.lineSeparator();
+        }
+            toString += "Core Competency: " + getCoreCompetency() ;
+        if (Objects.equals(getCoreCompetency(), "")) {
+            toString += "Core Competency: Data not available" + System.lineSeparator();
+        }
+
+            // End the string with a new line.
+            return toString;
+        }
     }
 
 
 
-
-}
