@@ -3,7 +3,7 @@ package org.launchcode.techjobs.oo;
 import java.util.Objects;
 
 public class Job {
-    static String defaultOutput = "Data not available";
+
 
     private int id;
     private static int nextId = 1;
@@ -26,16 +26,14 @@ public class Job {
         id = nextId;
         nextId++;
     }
-
     public Job(String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency) {
-        this(); // Call the default constructor to initialize 'id'
+        this(); // Calls the default constructor to initialize 'id'
         this.name = name;
         this.employer = employer;
         this.location = location;
         this.positionType = positionType;
         this.coreCompetency = coreCompetency;
     }
-
     public Job(int id, String name, String google, String s, String s1, String softwareDevelopment) {
     }
 
@@ -59,90 +57,75 @@ public class Job {
     //  and id.
 
     // Getters:
-
     public int getId() {
         return id;
     }
-
     public String getName() {
         return name;
     }
-
     public Employer getEmployer() {
         return employer;
     }
-
     public Location getLocation() {
         return location;
     }
-
     public PositionType getPositionType() {
         return positionType;
     }
-
     public CoreCompetency getCoreCompetency() {
         return coreCompetency;
     }
     // Setters:
-
     public void setName(String name) {
         this.name = name;
     }
-
     public void setEmployer(Employer employer) {
         this.employer = employer;
     }
-
     public void setLocation(Location location) {
         this.location = location;
     }
-
     public void setPositionType(PositionType positionType) {
         this.positionType = positionType;
     }
-
     public void setCoreCompetency(CoreCompetency coreCompetency) {
         this.coreCompetency = coreCompetency;
     }
-
     @Override
     public String toString() {
+        String defaultOutput = "Data not available";
         // ID
         StringBuilder result = new StringBuilder();
-
         result.append(System.lineSeparator() + "ID: " + getId() + System.lineSeparator());
 
         // name
         String tempOutput = this.getName();
-        if (tempOutput == null || tempOutput.isEmpty()){
+        if (tempOutput == null || tempOutput.isEmpty()) {
             tempOutput = defaultOutput;
         }
         result.append("Name: " + tempOutput + System.lineSeparator());
 
-
         // Employer
         tempOutput = "";
         Employer employer = this.getEmployer();
-        if (employer != null){
+        if (employer != null) {
             tempOutput = employer.getValue();
         }
-        if (tempOutput == null || tempOutput.isEmpty()){
+        if (tempOutput == null || tempOutput.isEmpty()) {
             tempOutput = defaultOutput;
         }
         result.append("Employer: " + tempOutput + System.lineSeparator());
 
-
         // Location
         tempOutput = "";
         Location location = this.getLocation();
-        if (location != null){
+        if (location != null) {
             tempOutput = location.getValue();
         }
-        if (tempOutput == null || tempOutput.isEmpty()){
+        if (tempOutput == null || tempOutput.isEmpty()) {
             tempOutput = defaultOutput;
         }
         result.append("Location: " + tempOutput + System.lineSeparator());
-
 
         // Position Type
         tempOutput = "";
@@ -155,7 +138,6 @@ public class Job {
         }
         result.append("Position Type: " + tempOutput + System.lineSeparator());
 
-
         // Core Compentency
         tempOutput = "";
         CoreCompetency cc = this.getCoreCompetency();
@@ -166,9 +148,7 @@ public class Job {
             tempOutput = defaultOutput;
         }
         result.append("Core Competency: " + tempOutput);
-
-        // End the string with a new line.
-        result.append(System.lineSeparator());
+        result.append(System.lineSeparator()); // supposed to add new line, but still failing T5
 
         return result.toString();
     }

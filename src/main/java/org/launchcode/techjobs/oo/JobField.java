@@ -5,7 +5,7 @@ public abstract class JobField {
     private static int nextId = 1;
     private String value;
 
-    // Create constructors, assigns a unique ID to each JobField
+    // assigns a unique ID to each JobField
     public JobField() {
         id = nextId;
         nextId++;
@@ -26,12 +26,11 @@ public abstract class JobField {
         this.value = value;
     }
 
-    // My custom Methods: returns the data stored in 'value'
     @Override
     public String toString() {
         return value;
     }
-    // Two objects are equal if they have the same id.
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -39,7 +38,7 @@ public abstract class JobField {
         JobField jobField = (JobField) o;
         return getId() == jobField.getId();
     }
-    // gives the id a unique hashcode
+    // gives the id
     @Override
     public int hashCode() {
         return Objects.hash(getId());
